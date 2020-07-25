@@ -1,0 +1,17 @@
+name: ubuntu-python-workspace
+image: okteto/python
+workdir: /root
+command: ["bash"]
+namespace: default
+volumes:
+  - /root/.vscode-server    # persist vscode extensions
+securityContext:
+  capabilities:
+    add:
+    - SYS_PTRACE            # required by the go debugger
+forward:
+  - 8080:8080
+persistentVolume:
+  enabled: true
+  storageClass: longhorn
+  size: 5Gi
