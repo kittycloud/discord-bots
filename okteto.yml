@@ -1,5 +1,5 @@
 name: ubuntu-python-workspace
-image: okteto/python
+image: python:latest
 workdir: /root
 command: ["bash"]
 namespace: default
