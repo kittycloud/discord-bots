@@ -1,0 +1,24 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: discord-bot-deployment
+  namespace: discord-bots
+spec:
+  selector:
+    matchLabels:
+      app: discord-bot
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: discord-bot
+    spec:
+      containers:
+      - name: kevin-the-cat
+        image: joestafford1/discord-bot:latest
+        env:
+        - name: DISCORD_BOT_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: discord-bot-token
+              key: token
