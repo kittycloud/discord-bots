@@ -1,5 +1,6 @@
 import discord
 import os
+import time
 
 client = discord.Client()
 TOKEN = os.getenv('DISCORD_BOT_TOKEN')
@@ -18,5 +19,9 @@ async def on_message(message):
     if client.user in mention:
         if 'hi' in message.content.lower():
             await message.channel.send('🎶 Hi! My name is {0.user.name}, I am an orange cat, and I have come here.. to help make shopping lists! 🎶'.format(client))
+        if 'go play' in message.content.lower():
+            await guild.create_text_channel('kevins-funhouse')
+            time.sleep(5)
+            await guild.delete('kevins-funhouse')
 
 client.run(TOKEN)
