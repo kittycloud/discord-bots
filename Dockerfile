@@ -9,8 +9,9 @@ RUN apt-get update && apt-get install -y \
 
 RUN python3 -m pip install -U discord.py[voice] && mkdir -p /app
 
-COPY kevin-the-cat.py /app/main.py
+# COPY kevin-the-cat.py /app/main.py
+COPY entrypoint.sh /app/entrypoint.sh
 
 WORKDIR /app
 
-ENTRYPOINT ["python3", "main.py"]
+ENTRYPOINT ["entrypoint.sh"]
