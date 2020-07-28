@@ -3,6 +3,8 @@ image: python:latest
 workdir: /root
 command: ["bash"]
 namespace: default
+secrets:
+  - $HOME/.ssh/id_rsa:/root/.ssh/id_rsa:600
 volumes:
   - /root/.vscode-server    # persist vscode extensions
 securityContext:
