@@ -32,9 +32,12 @@ async def on_message(message):
             await channel.send('my name is kevin!')
             # time.sleep(15)
             # await channel.delete()
-        if '$create_guild' in message.content.lower():
+        if 'create_guild' in message.content.lower():
             new_guild = await client.create_guild('Kevin`s Cathouse')
             new_guild_invite = await new_guild.create_invite()
             await message.channel.send(f"Come join me here! {new_guild_invite}")
+        if 'get_guilds'in message.content.lower():
+            guilds = await client.guilds
+            await message.channel.send(guilds)
 
 client.run(TOKEN)
