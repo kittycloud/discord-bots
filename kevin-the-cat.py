@@ -25,6 +25,7 @@ async def on_message(message):
         if 'play' in message.content.lower():
             guild = message.guild
             channel = await guild.create_text_channel('kevins-funhouse')
+            await channel.send('my name is kevin!')
             # time.sleep(15)
             # await channel.delete()
 
