@@ -24,7 +24,11 @@ async def on_message(message):
             await message.channel.send('_purrs_')
         if 'play' in message.content.lower():
             guild = message.guild
-            channel = await guild.create_text_channel('kevins-funhouse')
+            overwrites = {
+                guild.default_role: client.PermissionOverwrite(send_messages=False),
+                guild.me: client.PermissionOverwrite(send_messages=True)
+            }
+            channel = await guild.create_text_channel('kevins-funhouse', overwrites=overwrites)
             await channel.send('my name is kevin!')
             # time.sleep(15)
             # await channel.delete()
